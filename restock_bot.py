@@ -32,6 +32,8 @@ from urllib.parse import urlparse
 import requests
 from concurrent.futures import ThreadPoolExecutor
 
+VERSION = "v3-parallele"
+
 # ---------------------------------------------------------------------------
 # 1. TELEGRAM
 # ---------------------------------------------------------------------------
@@ -419,7 +421,7 @@ def main() -> None:
             sys.exit(1)
 
     mode = " (DRY RUN, rien ne part sur Telegram)" if DRY_RUN else ""
-    print(f"Surveillance démarrée{mode}.")
+    print(f"Surveillance démarrée [{VERSION}]{mode}.")
     print(f"{len(PRODUITS)} fiches et {len(RAYONS)} rayons suivis.\n")
 
     while True:
