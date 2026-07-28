@@ -30,6 +30,7 @@ import time
 from urllib.parse import urlparse
 
 import requests
+from concurrent.futures import ThreadPoolExecutor
 
 # ---------------------------------------------------------------------------
 # 1. TELEGRAM
@@ -311,17 +312,24 @@ def recuperer(url: str, etiquette: str, conf: dict) -> str | None:
 
 
 # ---------------------------------------------------------------------------
-def verifier_produits(etat: dict) -> None:
+# Une boutique = un fil d'execution. A l'interieur d'une boutique on reste
+# lent et poli ; entre boutiques, tout avance en meme temps. Le tour dure donc
+# le temps de la plus lente, au lieu de la somme des trois.
+# ---------------------------------------------------------------------------
+def traiter_boutique(domaine: str, conf: dict, etat: dict) -> tuple[list, dict, dict]:
+    """Retourne (messages a envoyer, maj des stocks, maj des rayons vus)."""
+    messages: list[str] = []
+    maj_stock: dict = {}
+    maj_vus: dict = {}
+
+    if trop_tot(conf):
+        return messages, maj_stock, maj_vus
+
+    # --- fiches produit ---
     for url in PRODUITS:
-        conf = boutique_de(url)
+        if boutique_de(url) is not conf:
+            continue
         nom = nom_depuis_url(url)
-        if conf is None:
-            print(f"[?] Boutique inconnue, fiche ignorée : {url}")
-            continue
-
-        if trop_tot(conf):
-            continue
-
         etiquette = f"{conf['nom']} - {nom}"
         page = recuperer(url, etiquette, conf)
         time.sleep(PAUSE_ENTRE_PAGES)
@@ -330,31 +338,23 @@ def verifier_produits(etat: dict) -> None:
 
         dispo = conf["stock"](page)
         if dispo is None:
-            print(f"[?] {etiquette} : stock illisible, fiche ignorée.")
+            print(f"[?] {etiquette} : stock illisible, fiche ignoree.")
             continue
 
         ancien = etat["stock"].get(url)
         if dispo and ancien is not True:
-            envoyer_telegram(f"🔔 RESTOCK - {conf['nom']}\n\n{nom}\n{url}")
+            messages.append(f"\U0001F514 RESTOCK - {conf['nom']}\n\n{nom}\n{url}")
             print(f"[+] ALERTE RESTOCK : {etiquette}")
         elif not dispo and ancien is True:
-            print(f"[-] Repassé en rupture : {etiquette}")
+            print(f"[-] Repasse en rupture : {etiquette}")
         else:
             print(f"    {etiquette} : {'dispo' if dispo else 'rupture'}")
+        maj_stock[url] = dispo
 
-        etat["stock"][url] = dispo
-
-
-def verifier_rayons(etat: dict) -> None:
+    # --- rayons ---
     for url in RAYONS:
-        conf = boutique_de(url)
-        if conf is None:
-            print(f"[?] Boutique inconnue, rayon ignoré : {url}")
+        if boutique_de(url) is not conf:
             continue
-
-        if trop_tot(conf):
-            continue
-
         etiquette = f"{conf['nom']} - rayon"
         page = recuperer(url, etiquette, conf)
         time.sleep(PAUSE_ENTRE_PAGES)
@@ -364,24 +364,44 @@ def verifier_rayons(etat: dict) -> None:
         liens = {conf["prefixe"] + l.lstrip("/")
                  for l in re.findall(conf["motif_lien"], page)}
         if not liens:
-            print(f"[!] {etiquette} : aucun lien produit trouvé.")
+            print(f"[!] {etiquette} : aucun lien produit trouve.")
             continue
 
         connus = etat["vus"].get(url)
         if connus is None:
-            etat["vus"][url] = sorted(liens)
-            print(f"    {etiquette} : {len(liens)} produits mémorisés (1er passage).")
+            maj_vus[url] = sorted(liens)
+            print(f"    {etiquette} : {len(liens)} produits memorises (1er passage).")
             continue
 
         nouveaux = sorted(liens - set(connus))
         for lien in nouveaux:
-            envoyer_telegram(
-                f"🆕 NOUVEAUTÉ - {conf['nom']}\n\n{nom_depuis_url(lien)}\n{lien}")
-            print(f"[+] ALERTE NOUVEAUTÉ : {lien}")
+            messages.append(
+                f"\U0001F195 NOUVEAUTE - {conf['nom']}\n\n{nom_depuis_url(lien)}\n{lien}")
+            print(f"[+] ALERTE NOUVEAUTE : {lien}")
         if not nouveaux:
             print(f"    {etiquette} : rien de neuf ({len(liens)} produits).")
+        maj_vus[url] = sorted(set(connus) | liens)
 
-        etat["vus"][url] = sorted(set(connus) | liens)
+    return messages, maj_stock, maj_vus
+
+
+def faire_un_tour(etat: dict) -> None:
+    with ThreadPoolExecutor(max_workers=len(BOUTIQUES)) as executeur:
+        resultats = list(executeur.map(
+            lambda item: traiter_boutique(item[0], item[1], etat),
+            BOUTIQUES.items()))
+
+    # On applique les changements et on envoie les alertes depuis le fil
+    # principal : pas de collision possible sur le fichier d'etat.
+    for messages, maj_stock, maj_vus in resultats:
+        etat["stock"].update(maj_stock)
+        etat["vus"].update(maj_vus)
+        for message in messages:
+            envoyer_telegram(message)
+
+    for conf in BOUTIQUES.values():
+        if not trop_tot(conf):
+            DERNIER_PASSAGE[conf["nom"]] = time.time()
 
 
 # ---------------------------------------------------------------------------
@@ -405,11 +425,7 @@ def main() -> None:
     while True:
         print(f"--- Tour de {time.strftime('%H:%M:%S')} ---")
         ECHECS.clear()
-        verifier_produits(etat)
-        verifier_rayons(etat)
-        for conf in BOUTIQUES.values():
-            if not trop_tot(conf):
-                DERNIER_PASSAGE[conf["nom"]] = time.time()
+        faire_un_tour(etat)
         etat["passages"] = dict(DERNIER_PASSAGE)
         sauver_etat(etat)
         print()
