@@ -15,7 +15,14 @@
     "https://www.micromania.fr/p/booster-pokemon-premium-checklane-ev02-evolution-a-paldea-version-anglaise-143166.html": false,
     "https://www.micromania.fr/p/booster-display-one-piece-op16-161507.html": false,
     "https://www.micromania.fr/p/booster-bipack-one-piece-op14-156814.html": false,
-    "https://www.micromania.fr/p/booster-one-piece-prb-02-premium-booster-153601.html": false
+    "https://www.micromania.fr/p/booster-one-piece-prb-02-premium-booster-153601.html": false,
+    "https://www.play-in.com/fr/produit/650372/coffret-dresseur-d-elite-etb-mega-evolution-nuit-noire-pokemon-fr": false,
+    "https://www.play-in.com/fr/produit/650369/display-de-36-boosters-mega-evolution-nuit-noire-pokemon-fr": false,
+    "https://www.play-in.com/fr/produit/650373/bundle-6-boosters-mega-evolution-nuit-noire-pokemon-fr": false,
+    "https://www.play-in.com/fr/produit/646300/display-de-24-boosters-op-16-l-heure-de-la-bataille-decisive-one-piece-fr": false,
+    "https://www.play-in.com/fr/produit/652672/double-pack-set-11-l-heure-de-la-bataille-decisive-op-16-one-piece-en": false,
+    "https://www.play-in.com/fr/produit/638158/double-pack-set-10-aventure-sur-l-ile-de-dieu-op-15-one-piece-fr": false,
+    "https://www.play-in.com/fr/produit/652495/deck-de-demarrage-ex-luffy-et-ace-st-30-one-piece-en": false
   },
   "vus": {
     "https://www.ultrajeux.com/jeu-4-pokemon.html": [
@@ -174,11 +181,67 @@
       "https://www.micromania.fr/p/star-fox-nintendo-switch-2-161549.html",
       "https://www.micromania.fr/p/tomodachi-life-une-vie-de-r%C3%AAve-158079.html",
       "https://www.micromania.fr/p/toploader-x-25-150296.html"
+    ],
+    "https://www.play-in.com/fr/gamme/3/pokemon/catalogue": [
+      "https://www.play-in.com/fr/produit/283976/100-pochettes-inner-gamegenic",
+      "https://www.play-in.com/fr/produit/436151/ark-nova-extension-plateau-zoo-bonus-1",
+      "https://www.play-in.com/fr/produit/468154/booster-premier-chapitre-premiere-impression-disney-lorcana-fr",
+      "https://www.play-in.com/fr/produit/495210/booster-ecarlate-et-violet-flammes-obsidiennes-pokemon-fr",
+      "https://www.play-in.com/fr/produit/581135/halo-flashpoint-spartan-edition",
+      "https://www.play-in.com/fr/produit/602000/etherium",
+      "https://www.play-in.com/fr/produit/610335/1-page-de-classeur-a-9-pochettes-sanseking",
+      "https://www.play-in.com/fr/produit/618494/lot-50-cartes-pokemon-fr",
+      "https://www.play-in.com/fr/produit/633264/booster-ecarlate-et-violet-the-glory-of-team-rocket-sv10-pokemon-ko",
+      "https://www.play-in.com/fr/produit/637207/booster-mega-evolution-equilibre-parfait-pokemon-fr",
+      "https://www.play-in.com/fr/produit/637211/coffret-dresseur-d-elite-etb-mega-evolution-equilibre-parfait-pokemon-fr",
+      "https://www.play-in.com/fr/produit/637558/booster-ecarlate-et-violet-super-electric-breaker-sv8-pokemon-ko",
+      "https://www.play-in.com/fr/produit/643155/booster-batailles-de-legende-la-glorieuse-galerie-yu-gi-oh-fr",
+      "https://www.play-in.com/fr/produit/646314/booster-op-16-l-heure-de-la-bataille-decisive-one-piece-en",
+      "https://www.play-in.com/fr/produit/647452/coffret-collection-premium-mega-zygarde-ex-pokemon-fr",
+      "https://www.play-in.com/fr/produit/648015/booster-mega-evolution-chaos-ascendant-pokemon-fr",
+      "https://www.play-in.com/fr/produit/648103/booster-de-jeu-le-hobbit-magic-fr",
+      "https://www.play-in.com/fr/produit/648113/booster-collector-le-hobbit-magic-fr",
+      "https://www.play-in.com/fr/produit/650368/booster-mega-evolution-nuit-noire-pokemon-fr",
+      "https://www.play-in.com/fr/produit/650369/display-de-36-boosters-mega-evolution-nuit-noire-pokemon-fr",
+      "https://www.play-in.com/fr/produit/650371/tripack-mega-evolution-nuit-noire-opermine-pokemon-fr",
+      "https://www.play-in.com/fr/produit/650372/coffret-dresseur-d-elite-etb-mega-evolution-nuit-noire-pokemon-fr",
+      "https://www.play-in.com/fr/produit/650373/bundle-6-boosters-mega-evolution-nuit-noire-pokemon-fr",
+      "https://www.play-in.com/fr/produit/650375/life-of-the-amazonia",
+      "https://www.play-in.com/fr/produit/651424/deck-combat-de-ligue-mega-lucario-ex-pokemon-fr",
+      "https://www.play-in.com/fr/produit/653587/booster-ecarlate-et-violet-foudre-noire-pokemon-fr",
+      "https://www.play-in.com/fr/produit/656382/deck-championnats-du-monde-2025-riley-mckay-flutter-devo-gardevoir-pokemon-fr",
+      "https://www.play-in.com/fr/produit/656526/coffret-collection-premium-mega-amphinobi-ex-pokemon-fr",
+      "https://www.play-in.com/fr/produit/658001/booster-blister-mega-evolution-nuit-noire-pokemon-fr"
+    ],
+    "https://www.play-in.com/fr/gamme/24/one-piece/catalogue": [
+      "https://www.play-in.com/fr/produit/283976/100-pochettes-inner-gamegenic",
+      "https://www.play-in.com/fr/produit/436151/ark-nova-extension-plateau-zoo-bonus-1",
+      "https://www.play-in.com/fr/produit/468154/booster-premier-chapitre-premiere-impression-disney-lorcana-fr",
+      "https://www.play-in.com/fr/produit/581135/halo-flashpoint-spartan-edition",
+      "https://www.play-in.com/fr/produit/602000/etherium",
+      "https://www.play-in.com/fr/produit/610335/1-page-de-classeur-a-9-pochettes-sanseking",
+      "https://www.play-in.com/fr/produit/611687/deck-de-demarrage-bleu-ace-newgate-st-22-one-piece-fr",
+      "https://www.play-in.com/fr/produit/617903/coffret-lot-de-decks-apprenez-ensemble-one-piece-fr",
+      "https://www.play-in.com/fr/produit/637207/booster-mega-evolution-equilibre-parfait-pokemon-fr",
+      "https://www.play-in.com/fr/produit/638158/double-pack-set-10-aventure-sur-l-ile-de-dieu-op-15-one-piece-fr",
+      "https://www.play-in.com/fr/produit/638426/booster-op-15-aventure-sur-l-ile-de-dieu-one-piece-en",
+      "https://www.play-in.com/fr/produit/638650/booster-paramount-war-one-piece-ko",
+      "https://www.play-in.com/fr/produit/643155/booster-batailles-de-legende-la-glorieuse-galerie-yu-gi-oh-fr",
+      "https://www.play-in.com/fr/produit/643237/booster-pillars-of-strength-opk03-one-piece-ko",
+      "https://www.play-in.com/fr/produit/646299/booster-op-16-l-heure-de-la-bataille-decisive-one-piece-fr",
+      "https://www.play-in.com/fr/produit/646300/display-de-24-boosters-op-16-l-heure-de-la-bataille-decisive-one-piece-fr",
+      "https://www.play-in.com/fr/produit/646314/booster-op-16-l-heure-de-la-bataille-decisive-one-piece-en",
+      "https://www.play-in.com/fr/produit/646315/display-de-24-boosters-op-16-l-heure-de-la-bataille-decisive-one-piece-en",
+      "https://www.play-in.com/fr/produit/648103/booster-de-jeu-le-hobbit-magic-fr",
+      "https://www.play-in.com/fr/produit/648113/booster-collector-le-hobbit-magic-fr",
+      "https://www.play-in.com/fr/produit/650375/life-of-the-amazonia",
+      "https://www.play-in.com/fr/produit/652495/deck-de-demarrage-ex-luffy-et-ace-st-30-one-piece-en",
+      "https://www.play-in.com/fr/produit/652672/double-pack-set-11-l-heure-de-la-bataille-decisive-op-16-one-piece-en"
     ]
   },
   "passages": {
-    "UltraJeux": 1785276879.569876,
-    "Micromania": 1785276879.5698836,
-    "Play-in": 1785276879.5698857
+    "UltraJeux": 1785278445.5827649,
+    "Micromania": 1785278445.5827692,
+    "Play-in": 1785278445.58277
   }
 }
