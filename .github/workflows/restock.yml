@@ -2,16 +2,60 @@ name: Bot restock TCG
 
 on:
   schedule:
-- cron: "7,17,27,37,47,57 * * * *"
-  # Permet aussi de lancer un tour a la main depuis l'onglet Actions.
+    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
 
-# Autorise le workflow a reecrire le fichier d'etat dans le depot.
 permissions:
   contents: write
 
-# Si un tour deborde sur le suivant, on laisse finir le premier
-# au lieu de lancer deux bots en parallele.
+concurrency:
+  group: restock
+  cancel-in-progress: false
+
+jobs:
+  surveiller:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dependances
+        run: pip install requests
+
+      - name: Lancer un tour de surveillance
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python restock_bot.py
+
+      - name: Sauvegarder la memoire du bot
+        run: |
+          git config user.name "bot-restock"
+          git config user.email "bot@users.noreply.github.com"
+          git add etat_stock.json
+          if git diff --staged --quiet; then
+            echo "Rien de nouveau, pas de sauvegarde."
+          else
+            git commit -m "etat $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git pull --rebase --autostash
+            git push
+          finame: Bot restock TCG
+
+on:
+  schedule:
+    - cron: "7,17,27,37,47,57 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 concurrency:
   group: restock
   cancel-in-progress: false
