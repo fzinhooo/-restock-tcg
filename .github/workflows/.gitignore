@@ -1,0 +1,6 @@
+# Identifiants Telegram : ne doit JAMAIS partir sur GitHub
+secrets.local
+
+# Fichiers Python temporaires
+__pycache__/
+*.pyc
