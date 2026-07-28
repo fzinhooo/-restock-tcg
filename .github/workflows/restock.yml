@@ -3,7 +3,7 @@ name: Bot restock TCG
 on:
   schedule:
     # Toutes les 5 minutes. C'est la frequence minimale autorisee par GitHub.
-    - cron: "*/5 * * * *"
+- cron: "7,17,27,37,47,57 * * * *"
   # Permet aussi de lancer un tour a la main depuis l'onglet Actions.
   workflow_dispatch:
 
