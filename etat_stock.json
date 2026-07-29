@@ -2165,48 +2165,7 @@
       "last_error": null
     }
   },
-  "outbox": [
-    {
-      "id": "04a6c42435e54d6ca3ae5c2afbc25183",
-      "kind": "new",
-      "key": "https://www.ultrajeux.com/produit-32840-st31-monkey-d-luffy-0810199500928.html",
-      "text": "🆕 NOUVEAUTÉ — UltraJeux\n\nSt31 monkey d luffy\nhttps://www.ultrajeux.com/produit-32840-st31-monkey-d-luffy-0810199500928.html",
-      "url": "https://www.ultrajeux.com/produit-32840-st31-monkey-d-luffy-0810199500928.html",
-      "cart_url": null,
-      "created_at": "2026-07-29T14:31:44Z",
-      "delivered": []
-    },
-    {
-      "id": "b9e8dc8558204e3c923e1f731edf6cb4",
-      "kind": "new",
-      "key": "https://www.ultrajeux.com/produit-32841-st32-roronoa-zoro-0810199500959.html",
-      "text": "🆕 NOUVEAUTÉ — UltraJeux\n\nSt32 roronoa zoro\nhttps://www.ultrajeux.com/produit-32841-st32-roronoa-zoro-0810199500959.html",
-      "url": "https://www.ultrajeux.com/produit-32841-st32-roronoa-zoro-0810199500959.html",
-      "cart_url": null,
-      "created_at": "2026-07-29T14:31:44Z",
-      "delivered": []
-    },
-    {
-      "id": "89f4c49893014d81a4e38cc0efc4146e",
-      "kind": "new",
-      "key": "https://www.ultrajeux.com/produit-32842-st33-kuzan-0810199500980.html",
-      "text": "🆕 NOUVEAUTÉ — UltraJeux\n\nSt33 kuzan\nhttps://www.ultrajeux.com/produit-32842-st33-kuzan-0810199500980.html",
-      "url": "https://www.ultrajeux.com/produit-32842-st33-kuzan-0810199500980.html",
-      "cart_url": null,
-      "created_at": "2026-07-29T14:31:44Z",
-      "delivered": []
-    },
-    {
-      "id": "b6c7d86d2b4647eaa372e9f255d243d1",
-      "kind": "new",
-      "key": "https://www.ultrajeux.com/produit-32845-st36-eustass-captain-kid-0810199501079.html",
-      "text": "🆕 NOUVEAUTÉ — UltraJeux\n\nSt36 eustass captain kid\nhttps://www.ultrajeux.com/produit-32845-st36-eustass-captain-kid-0810199501079.html",
-      "url": "https://www.ultrajeux.com/produit-32845-st36-eustass-captain-kid-0810199501079.html",
-      "cart_url": null,
-      "created_at": "2026-07-29T14:31:44Z",
-      "delivered": []
-    }
-  ],
+  "outbox": [],
   "passages": {
     "UltraJeux": 1785335504.4231834,
     "Micromania": 1785335504.4231784,
