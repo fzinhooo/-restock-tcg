@@ -1,21 +1,29 @@
 name: Bot restock TCG
 
 on:
-  schedule:
-    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
+  schedule:
+    # GitHub ne garantit pas l'heure : les tours planifies sont retardes, et
+    # parfois abandonnes. On ne lui demande donc plus de relancer le bot sans
+    # arret. Une execution surveille toute seule pendant 5 h 20 ; ce minuteur
+    # ne sert qu'a en redemarrer une quand la precedente se termine.
+    # Minutes volontairement decalees : le debut d'heure est le pire moment.
+    - cron: "13,43 * * * *"
 
-permissions:
-  contents: write
-
+# Une seule execution a la fois. Si une nouvelle est declenchee pendant qu'une
+# autre tourne, elle attend son tour au lieu de la remplacer : la surveillance
+# ne s'interrompt jamais.
 concurrency:
   group: restock
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   surveiller:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 345          # 5 h 45, la limite de GitHub etant 6 h
 
     steps:
       - name: Recuperer le depot
@@ -35,15 +43,13 @@ jobs:
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: python restock_bot.py
 
-      - name: Sauvegarder la memoire du bot
+      - name: Sauvegarder l'etat (filet de securite)
+        if: always()
         run: |
-          git config user.name "bot-restock"
+          git config user.name "bot"
           git config user.email "bot@users.noreply.github.com"
           git add etat_stock.json
-          if git diff --staged --quiet; then
-            echo "Rien de nouveau, pas de sauvegarde."
-          else
-            git commit -m "etat $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git pull --rebase --autostash
-            git push
-          fi
+          git diff --cached --quiet && exit 0
+          git commit -m "etat $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase --quiet || true
+          git push --quiet
