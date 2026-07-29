@@ -1,5 +1,5 @@
 {
-  "schema_version": 9,
+  "schema_version": 10,
   "products": {
     "https://www.ultrajeux.com/produit-31828-illustration-box-ib-05--0810158837850.html": {
       "status": "out_of_stock",
@@ -2186,12 +2186,19 @@
     "Blazingtail": 1785344687.2202785
   },
   "heartbeat": {
-    "version": "v9",
+    "version": "v10",
     "last_cycle": "2026-07-29T17:09:48Z",
     "shops_checked": 1
   },
   "migration": {
-    "from": 8,
-    "at": "2026-07-29T12:46:40Z"
+    "from": 9,
+    "at": "2026-07-29T17:19:13Z"
+  },
+  "dynamic_products": {},
+  "scheduler": {
+    "shop_backoff": {}
+  },
+  "daily_heartbeat": {
+    "last_date": null
   }
 }
