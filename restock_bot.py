@@ -33,7 +33,7 @@ from urllib.parse import urlparse
 import requests
 from concurrent.futures import ThreadPoolExecutor
 
-VERSION = "v7-tour-long"
+VERSION = "v8-blazingtail"
 
 # ---------------------------------------------------------------------------
 # 1. TELEGRAM
@@ -121,6 +121,14 @@ BOUTIQUES = {
         # jeux (jeux de plateau, Lorcana...). On ne garde que les liens dont
         # l'adresse mentionne le jeu du rayon.
         "filtrer_par_jeu": True,
+    },
+    "blazingtail.fr": {
+        "nom": "Blazingtail",
+        "stock": stock_schema,
+        "motif_lien": r'href="https://www\.blazingtail\.fr/(\d+-[^"#]+?\.html)"',
+        "prefixe": "https://www.blazingtail.fr/",
+        "accueil": "https://www.blazingtail.fr/",
+        "cadence": 300,
     },
     "kingdultes.com": {
         "nom": "KingDultes",
@@ -214,6 +222,14 @@ PRODUITS = [
 # 5. RAYONS À SURVEILLER (nouveautés et précommandes)
 # ---------------------------------------------------------------------------
 RAYONS = [
+    # Blazingtail : petit catalogue de scelle, surtout du Pokemon.
+    "https://www.blazingtail.fr/1318-booster-pokemon",
+    "https://www.blazingtail.fr/1319-etb-pokemon",
+    "https://www.blazingtail.fr/1320-tripack-pokemon",
+    "https://www.blazingtail.fr/1321-display-pokemon",
+    "https://www.blazingtail.fr/1324-coffret-pokemon",
+    "https://www.blazingtail.fr/2060-nouveautes",
+
     "https://www.ultrajeux.com/jeu-4-pokemon.html",
     "https://www.ultrajeux.com/jeu-1031-one-piece-card-game.html",
     "https://www.micromania.fr/c/cartespokemon",
@@ -489,7 +505,10 @@ def traiter_boutique(domaine: str, conf: dict, etat: dict) -> tuple[list, dict, 
             continue
 
         ancien = etat["stock"].get(url)
-        if dispo and ancien is not True:
+        # On n'alerte que sur un vrai retour en stock. Un produit ajoute a la
+        # liste alors qu'il est deja disponible ne declenche rien : sinon
+        # chaque ajout partirait en rafale d'alertes inutiles.
+        if dispo and ancien is False:
             messages.append((url, f"\U0001F514 RESTOCK - {conf['nom']}\n\n{nom}\n{url}"))
             print(f"[+] ALERTE RESTOCK : {etiquette}")
         elif not dispo and ancien is True:
