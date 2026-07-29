@@ -3,53 +3,64 @@ name: Bot restock TCG
 on:
   workflow_dispatch:
   schedule:
-    # GitHub ne garantit pas l'heure : les tours planifies sont retardes, et
-    # parfois abandonnes. On ne lui demande donc plus de relancer le bot sans
-    # arret. Une execution surveille toute seule pendant 5 h 20 ; ce minuteur
-    # ne sert qu'a en redemarrer une quand la precedente se termine.
-    # Minutes volontairement decalees : le debut d'heure est le pire moment.
+    # Filet de sécurité seulement : chaque exécution déclenche normalement la
+    # suivante. Les minutes évitent le pic de charge du début d'heure.
     - cron: "13,43 * * * *"
 
-# Une seule execution a la fois. Si une nouvelle est declenchee pendant qu'une
-# autre tourne, elle attend son tour au lieu de la remplacer : la surveillance
-# ne s'interrompt jamais.
+# Une exécution active et, au maximum, la plus récente en attente. Les anciens
+# déclenchements en attente sont remplacés, ce qui évite une file obsolète.
 concurrency:
   group: restock
   cancel-in-progress: false
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   surveiller:
     runs-on: ubuntu-latest
-    timeout-minutes: 345          # 5 h 45, la limite de GitHub etant 6 h
+    timeout-minutes: 345
 
     steps:
-      - name: Recuperer le depot
+      - name: Récupérer le dernier état
         uses: actions/checkout@v4
+        with:
+          # Un run planifié peut avoir attendu plusieurs heures. On récupère
+          # explicitement la branche à jour au lieu de son ancien SHA.
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
 
       - name: Installer Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Installer les dependances
-        run: pip install requests
+      - name: Installer les dépendances
+        run: python -m pip install --disable-pip-version-check requests
 
-      - name: Lancer un tour de surveillance
+      - name: Surveiller les boutiques
+        id: bot
         env:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT: ${{ secrets.TG_CHAT }}
+          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
         run: python restock_bot.py
 
-      - name: Sauvegarder l'etat (filet de securite)
+      - name: Sauvegarder l'état final
         if: always()
         run: |
           git config user.name "bot"
           git config user.email "bot@users.noreply.github.com"
           git add etat_stock.json
           git diff --cached --quiet && exit 0
-          git commit -m "etat $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git pull --rebase --quiet || true
-          git push --quiet
+          git commit -m "etat v9 fin workflow - $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase --quiet origin
+          git push --quiet origin HEAD
+
+      - name: Déclencher la relève
+        if: always() && steps.bot.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESTOCK_BRANCH: ${{ github.event.repository.default_branch }}
+        run: gh workflow run restock.yml --ref "$RESTOCK_BRANCH"
