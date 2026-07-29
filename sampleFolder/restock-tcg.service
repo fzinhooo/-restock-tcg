@@ -1,0 +1,19 @@
+[Unit]
+Description=Bot restock TCG v10
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=restock
+Group=restock
+WorkingDirectory=/opt/restock-tcg
+EnvironmentFile=/etc/restock-tcg.env
+ExecStart=/opt/restock-tcg/.venv/bin/python -u /opt/restock-tcg/restock_bot.py
+Restart=always
+RestartSec=15
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
