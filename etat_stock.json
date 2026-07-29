@@ -2177,18 +2177,7 @@
       "last_error": null
     }
   },
-  "outbox": [
-    {
-      "id": "0942f3afa3344907bf1b22a2025e2ca3",
-      "kind": "daily_heartbeat",
-      "key": "2026-07-29",
-      "text": "💚 BOT TCG ACTIF\n\n4/5 boutiques sans panne déclarée\n90 fiches connues, 0 sortie(s) ciblée(s) auto-suivie(s)\nDernier cycle : 2026-07-29T17:09:48Z",
-      "url": null,
-      "cart_url": null,
-      "created_at": "2026-07-29T17:19:46Z",
-      "delivered": []
-    }
-  ],
+  "outbox": [],
   "passages": {
     "UltraJeux": 1785345586.5552318,
     "Micromania": 1785345586.5552132,
