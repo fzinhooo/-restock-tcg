@@ -45,7 +45,7 @@ jobs:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT: ${{ secrets.TG_CHAT }}
           HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
-        run: python restock_bot.py
+        run: python -u restock_bot.py
 
       - name: Sauvegarder l'état final
         if: always()
