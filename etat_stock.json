@@ -2158,18 +2158,7 @@
       "last_error": null
     }
   },
-  "outbox": [
-    {
-      "id": "91195ed2b1d14ab187618579c7bf87e5",
-      "kind": "health_down",
-      "key": "2026-07-29T13:47:08Z",
-      "text": "⚠️ SURVEILLANCE DÉGRADÉE\n\n• Micromania – rayon pokemon — aucun lien produit trouvé\n• Micromania – rayon one-piece — aucun lien produit trouvé",
-      "url": null,
-      "cart_url": null,
-      "created_at": "2026-07-29T13:47:08Z",
-      "delivered": []
-    }
-  ],
+  "outbox": [],
   "passages": {
     "UltraJeux": 1785332828.739198,
     "Micromania": 1785332828.7391932,
