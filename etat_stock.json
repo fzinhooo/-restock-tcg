@@ -88,7 +88,8 @@
     "https://www.kingdultes.com/products/decks-yu-gi-oh-modernes-legendaires-2026": false,
     "https://www.kingdultes.com/products/boosters-blister-yu-gi-oh-le-labyrinthe-des-morts": false,
     "https://www.kingdultes.com/products/boosters-yu-gi-oh-le-labyrinthe-des-morts": false,
-    "https://www.kingdultes.com/products/disney-lorcana-chapitre-11-trove-pack": false
+    "https://www.kingdultes.com/products/disney-lorcana-chapitre-11-trove-pack": false,
+    "https://www.micromania.fr/p/booster-one-piece-op12-151818.html": false
   },
   "vus": {
     "https://www.ultrajeux.com/jeu-4-pokemon.html": [
@@ -390,9 +391,9 @@
     ]
   },
   "passages": {
-    "UltraJeux": 1785316249.4838445,
-    "Micromania": 1785315542.4383595,
-    "Play-in": 1785316249.4838507,
-    "KingDultes": 1785316249.4838521
+    "UltraJeux": 1785317320.746435,
+    "Micromania": 1785316979.813533,
+    "Play-in": 1785317320.7464395,
+    "KingDultes": 1785317320.7464402
   }
 }
