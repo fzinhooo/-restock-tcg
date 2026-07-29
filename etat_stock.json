@@ -2177,18 +2177,7 @@
       "last_error": null
     }
   },
-  "outbox": [
-    {
-      "id": "970d62d1b4ee472d913954a9e8881e53",
-      "kind": "health_down",
-      "key": "2026-07-29T17:45:21Z",
-      "text": "⚠️ SURVEILLANCE DÉGRADÉE\n\n• Blazingtail – rayon pokemon — aucun lien produit trouvé\n• Blazingtail – rayon 2060 nouveautes — aucun lien produit trouvé",
-      "url": null,
-      "cart_url": null,
-      "created_at": "2026-07-29T17:45:21Z",
-      "delivered": []
-    }
-  ],
+  "outbox": [],
   "passages": {
     "UltraJeux": 1785347121.9708397,
     "Micromania": 1785347121.9708147,
