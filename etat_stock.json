@@ -58,7 +58,7 @@
     "https://www.kingdultes.com/products/pokemon-paquet-65-protege-carte-generique": false,
     "https://www.kingdultes.com/products/cahier-a4-pokemon-me04-chaos-ascendant": true,
     "https://www.kingdultes.com/products/cartes-one-piece-booster-op16-heure-de-la-bataille-decisive": true,
-    "https://www.kingdultes.com/products/cartes-one-piece-booster-op14-les-sept-de-la-mer-d-azur": true,
+    "https://www.kingdultes.com/products/cartes-one-piece-booster-op14-les-sept-de-la-mer-d-azur": false,
     "https://www.kingdultes.com/products/cartes-one-piece-booster-op15-aventure-sur-l-ile-de-dieu": true,
     "https://www.kingdultes.com/products/cartes-one-piece-booster-op10-sang-royal": true,
     "https://www.kingdultes.com/products/25-pochettes-plastique-35pt-ultimate-guard": true,
@@ -391,9 +391,9 @@
     ]
   },
   "passages": {
-    "UltraJeux": 1785319420.380954,
-    "Micromania": 1785318354.5625024,
-    "Play-in": 1785319420.3809593,
-    "KingDultes": 1785319420.3809605
+    "UltraJeux": 1785320473.383271,
+    "Micromania": 1785319785.9858353,
+    "Play-in": 1785320473.3832765,
+    "KingDultes": 1785320473.3832774
   }
 }
