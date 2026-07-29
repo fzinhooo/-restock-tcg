@@ -183,6 +183,7 @@
       "https://www.micromania.fr/p/toploader-x-25-150296.html"
     ],
     "https://www.play-in.com/fr/gamme/3/pokemon/catalogue": [
+      "https://www.play-in.com/fr/produit/276603/reykholt",
       "https://www.play-in.com/fr/produit/283976/100-pochettes-inner-gamegenic",
       "https://www.play-in.com/fr/produit/436151/ark-nova-extension-plateau-zoo-bonus-1",
       "https://www.play-in.com/fr/produit/468154/booster-premier-chapitre-premiere-impression-disney-lorcana-fr",
@@ -214,6 +215,7 @@
       "https://www.play-in.com/fr/produit/658001/booster-blister-mega-evolution-nuit-noire-pokemon-fr"
     ],
     "https://www.play-in.com/fr/gamme/24/one-piece/catalogue": [
+      "https://www.play-in.com/fr/produit/276603/reykholt",
       "https://www.play-in.com/fr/produit/283976/100-pochettes-inner-gamegenic",
       "https://www.play-in.com/fr/produit/436151/ark-nova-extension-plateau-zoo-bonus-1",
       "https://www.play-in.com/fr/produit/468154/booster-premier-chapitre-premiere-impression-disney-lorcana-fr",
@@ -240,8 +242,8 @@
     ]
   },
   "passages": {
-    "UltraJeux": 1785283115.6947536,
-    "Micromania": 1785283115.6947582,
-    "Play-in": 1785283115.6947594
+    "UltraJeux": 1785295842.6775582,
+    "Micromania": 1785295842.6775627,
+    "Play-in": 1785295842.6775665
   }
 }
