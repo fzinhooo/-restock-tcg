@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source_file=/var/lib/restock-tcg/etat_stock.json
+backup_dir=/var/backups/restock-tcg
+
+install -d -o restock -g restock -m 750 "$backup_dir"
+cp --preserve=timestamps "$source_file" \
+  "$backup_dir/etat_stock-$(date +%F-%H%M%S).json"
+find "$backup_dir" -type f -name 'etat_stock-*.json' -mtime +14 -delete
