@@ -2160,28 +2160,7 @@
       "last_error": null
     }
   },
-  "outbox": [
-    {
-      "id": "d8d9920e051046e99e916eae295cf1c0",
-      "kind": "new",
-      "key": "https://www.ultrajeux.com/produit-32846-illustration-box-ib-07--0810199502410.html",
-      "text": "🆕 NOUVEAUTÉ — UltraJeux\n\nIllustration box ib 07\nhttps://www.ultrajeux.com/produit-32846-illustration-box-ib-07--0810199502410.html",
-      "url": "https://www.ultrajeux.com/produit-32846-illustration-box-ib-07--0810199502410.html",
-      "cart_url": null,
-      "created_at": "2026-07-29T14:04:14Z",
-      "delivered": []
-    },
-    {
-      "id": "f6fe37594c3c4f79972e9b394167e38e",
-      "kind": "new",
-      "key": "https://www.ultrajeux.com/produit-32847-illustration-box-ib-08--0810199502441.html",
-      "text": "🆕 NOUVEAUTÉ — UltraJeux\n\nIllustration box ib 08\nhttps://www.ultrajeux.com/produit-32847-illustration-box-ib-08--0810199502441.html",
-      "url": "https://www.ultrajeux.com/produit-32847-illustration-box-ib-08--0810199502441.html",
-      "cart_url": null,
-      "created_at": "2026-07-29T14:04:14Z",
-      "delivered": []
-    }
-  ],
+  "outbox": [],
   "passages": {
     "UltraJeux": 1785333854.7547634,
     "Micromania": 1785332828.7391932,
