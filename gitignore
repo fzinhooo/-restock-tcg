@@ -2,4 +2,5 @@ secrets.local
 .env
 __pycache__/
 *.py[cod]
+*.shadow.json
 .DS_Store
